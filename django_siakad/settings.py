@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
+import base64
 from pathlib import Path
 from django.templatetags.static import static
 from django.urls import reverse_lazy
@@ -44,7 +45,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_siakad',
-    'master'
+    'master',
+    'akademik'
+    
 ]
 
 MIDDLEWARE = [
@@ -82,9 +85,13 @@ WSGI_APPLICATION = 'django_siakad.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "siakad_kampus",
+        "USER": "postgres",
+        "PASSWORD": base64.b64decode("bmVla2FydTIxMTg="),
+        "HOST": "127.0.0.1",
+        "PORT": "5432",
     }
 }
 
