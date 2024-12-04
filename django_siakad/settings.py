@@ -203,6 +203,43 @@ UNFOLD = {
                 ]
             },
             {
+                "title": "Akademik",
+                "separator": True,
+                "collapsible": True,
+                "items": [
+                    {
+                        "title": "Tahun Akademik",
+                        "icon": "calendar_today",
+                        "link": reverse_lazy("admin:akademik_tahunakademik_changelist"),
+                    },
+                    {
+                        "title": "Mata Kuliah",
+                        "icon": "book",
+                        "link": reverse_lazy("admin:akademik_matakuliah_changelist"),
+                    },
+                    {
+                        "title": "Jadwal",
+                        "icon": "schedule",
+                        "link": reverse_lazy("admin:akademik_jadwal_changelist"),
+                    },
+                    {
+                        "title": "KRS",
+                        "icon": "assignment",
+                        "link": reverse_lazy("admin:akademik_krs_changelist"),
+                    },
+                    {
+                        "title": "KHS",
+                        "icon": "grade",
+                        "link": reverse_lazy("admin:akademik_khs_changelist"),
+                    },
+                    {
+                        "title": "SPP",
+                        "icon": "payments",
+                        "link": reverse_lazy("admin:akademik_spp_changelist"),
+                    },
+                ]
+            },
+            {
                 "title": "Pengaturan",
                 "separator": True,
                 "collapsible": True,
@@ -220,6 +257,6 @@ UNFOLD = {
                 ]
             }            
         ]
-    },
+    }
 
 }
