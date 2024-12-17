@@ -3,7 +3,6 @@ from django.db import models
 
 # Create your models here.
 class Prodi(models.Model):
-
     class Meta:
         verbose_name = 'prodi'
         verbose_name_plural = 'prodi'

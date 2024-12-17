@@ -17,25 +17,39 @@ from .models import (
 
 @admin.register(Prodi)
 class ProdiAdmin(ModelAdmin):
-    pass
+    list_display = ('nama', 'kode')
+    list_filter = [
+        ("nama", FieldTextFilter),
+        ("kode", FieldTextFilter),
+    ]
 
 
 @admin.register(Mahasiswa)
 class MahasiswaAdmin(ModelAdmin):
-    pass
+    list_display = ('nama', 'nim', 'prodi')
+    list_filter = [
+        ("nama", FieldTextFilter),
+        ("nim", FieldTextFilter),
+        ("prodi", MultipleRelatedDropdownFilter),
+    ]
 
 
 @admin.register(Dosen)
 class DosenAdmin(ModelAdmin):
+    list_display = ('nama', 'nid', 'tgl_lahir', 'jenis_kelamin', 'prodi')
     list_filter_submit = True
     list_filter = [
         ("nama", FieldTextFilter),
         ("tgl_lahir", RangeDateFilter),
-        ("jenis_kelamin", MultipleChoicesDropdownFilter,),
+        ("jenis_kelamin", MultipleChoicesDropdownFilter),
         ("prodi", MultipleRelatedDropdownFilter),
     ]
 
 
 @admin.register(Ruang)
 class RuangAdmin(ModelAdmin):
-    pass
+    list_display = ('nama', 'kode')
+    list_filter = [
+        ("nama", FieldTextFilter),
+        ("kode", FieldTextFilter),
+    ]

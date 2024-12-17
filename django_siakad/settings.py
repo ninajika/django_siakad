@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-l(43&#xfu0%_kcmmx)x@#xgkt_j69evlz16ubfyxfkl6z^hrft'
+SECRET_KEY = 'django-insecure-l(43#%xfu0%_kcmmx)x@#xgkt_j69evlz16ubfyxfkl6z^hrft'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -46,7 +46,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_siakad',
     'master',
-    'akademik'
+    'akademik',
+    'keuangan',
+    'laporan',
     
 ]
 
@@ -89,7 +91,7 @@ DATABASES = {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": "siakad_kampus",
         "USER": "postgres",
-        "PASSWORD": base64.b64decode("bmVla2FydTIxMTg="),
+        "PASSWORD": "neekaru2118",
         "HOST": "127.0.0.1",
         "PORT": "5432",
     }
@@ -203,6 +205,67 @@ UNFOLD = {
                 ]
             },
             {
+                "title": "Akademik",
+                "separator": True,
+                "collapsible": True,
+                "items": [
+                    {
+                        "title": "Tahun Akademik",
+                        "icon": "event",
+                        "link": reverse_lazy("admin:akademik_tahunakademik_changelist"),
+                    },
+                    {
+                        "title": "Mata Kuliah",
+                        "icon": "menu_book",
+                        "link": reverse_lazy("admin:akademik_matakuliah_changelist"),
+                    },
+                    {
+                        "title": "Jadwal",
+                        "icon": "schedule",
+                        "link": reverse_lazy("admin:akademik_jadwal_changelist"),
+                    },
+                    {
+                        "title": "KRS",
+                        "icon": "article",
+                        "link": reverse_lazy("admin:akademik_krs_changelist"),
+                    },
+                ]
+            },            
+            {
+                "title": "Keuangan",
+                "separator": True,
+                "collapsible": True,
+                "items": [
+                    {
+                        "title": "Jenis Pembayaran",
+                        "icon": "payments",
+                        "link": reverse_lazy("admin:keuangan_jenispembayaran_changelist"),
+                    },
+                    {
+                        "title": "Pembayaran",
+                        "icon": "attach_money",
+                        "link": reverse_lazy("admin:keuangan_pembayaran_changelist"),
+                    },
+                ]
+            },
+            {
+                "title": "Laporan",
+                "separator": True,
+                "collapsible": True,
+                "items": [
+                    {
+                        "title": "Nilai",
+                        "icon": "assessment",
+                        "link": reverse_lazy("admin:laporan_nilai_changelist"),
+                    },
+                    {
+                        "title": "Kehadiran",
+                        "icon": "fact_check",
+                        "link": reverse_lazy("admin:laporan_kehadiran_changelist"),
+                    },
+                ]
+            },
+            {
                 "title": "Pengaturan",
                 "separator": True,
                 "collapsible": True,
@@ -218,8 +281,8 @@ UNFOLD = {
                         "link": reverse_lazy("admin:auth_group_changelist"),
                     },
                 ]
-            }            
+            }
         ]
-    },
+    }
 
 }
