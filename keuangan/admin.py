@@ -16,12 +16,11 @@ from .models import JenisPembayaran, Pembayaran
 
 @admin.register(JenisPembayaran)
 class JenisPembayaranAdmin(ModelAdmin):
-    list_display = ('nama_pembayaran', 'jumlah', 'keterangan')
+    list_display = ('nama_pembayaran', 'keterangan')
     list_filter = [
         ("nama_pembayaran", FieldTextFilter),
-        ("jumlah", FieldTextFilter),
     ]
-    search_fields = ('nama_pembayaran', 'jumlah')
+    search_fields = ('nama_pembayaran', )
     list_per_page = 20
     actions = ['convert_to_csv']
 
@@ -31,10 +30,10 @@ class JenisPembayaranAdmin(ModelAdmin):
         response['Content-Disposition'] = 'attachment; filename="jenis_pembayaran.csv"'
 
         writer = csv.writer(response)
-        writer.writerow(['nama_pembayaran', 'jumlah', 'keterangan'])
+        writer.writerow(['nama_pembayaran', 'keterangan'])
 
         for obj in queryset:
-            writer.writerow([obj.nama_pembayaran, obj.jumlah, obj.keterangan])
+            writer.writerow([obj.nama_pembayaran, obj.keterangan])
 
         return response
 
